@@ -10,6 +10,7 @@
 #define TSET_HPP
 #include <iostream>
 #include <ostream>
+#include <cassert>
 
 /**
   @brief Classe Set templata
@@ -204,6 +205,40 @@ public:
         }
     }
 
+    bool remove(const value_type &value){
+        if(contains(value)){
+            for(size_type i = 0; i < _size; ++i){
+                if(_eql(_darr[i], value)){
+                    for(size_type j = i; j < _size - 1; j++){
+                        _darr[j] = _darr[j + 1];
+                    } 
+                }
+            }
+            #ifndef NDEBUG 
+            std::cout<<"bool remove(true)"<<std::endl;
+            #endif 
+            _size--;
+            return true;
+        }
+        #ifndef NDEBUG 
+        std::cout<<"bool remove(false)"<<std::endl;
+        #endif 
+        return false;
+    }
+
+    /**
+        @brief Operatore getter di una elemento del Set
+
+        @param index dell'elemento da leggere
+        @return reference all'intero da leggere
+    
+        @pre index<_size
+    */
+    const value_type& operator[](size_type index) const{
+        assert(index < _size);
+        return _darr[index];
+    }
+
     /**
        @brief Verifica se l'elemento è presente nel set.
       
@@ -221,6 +256,56 @@ public:
         return false;
     }
 
+    /**
+        @brief Operatore di uguaglianza ==
+        
+        Confronta due oggetti tset per verificare l'uguaglianza.
+        
+        @param other Altro oggetto tset da confrontare.
+        @return true se i due set sono uguali, altrimenti false.
+    */
+
+    bool operator==(const tset &set) const{
+        if(_size != set._size){
+
+            #ifndef NDEBUG 
+            std::cout<<"bool ==(false)"<<std::endl;
+            #endif 
+
+            return false;
+        }
+        else{
+            for(size_type i = 0; i < _size; ++i){
+                if(!_eql(_darr[i], set._darr[i])){
+
+                    #ifndef NDEBUG 
+                    std::cout<<"bool ==(false)"<<std::endl;
+                    #endif 
+
+                    return false;
+                }
+            }
+            #ifndef NDEBUG 
+            std::cout<<"bool ==(true)"<<std::endl;
+            #endif 
+
+            return true;
+        }
+    }
+
+
+
+    /**
+        @brief Operatore di stream
+
+        Ridefinizione dell'operatore di stream per inviare su
+        ostream il contenuto di un Set
+
+        @param os stream di output
+        @param set Set da stampare
+
+        @return reference allo stream di output 
+    */
     friend std::ostream& operator<<(std::ostream &os, const tset &set){
         os << set._size << " " << set._capacity << " ";
         for(typename tset::size_type i = 0; i < set._size; ++i){
@@ -228,6 +313,10 @@ public:
         }
         return os;
     }
+
+
+
+
 
 
 
@@ -252,6 +341,7 @@ public:
     - riguarda commento per documentazione della classe.
     - aggiunta _eql al copy constructor?
     - togliere set._capacity dall'ostream (riga 224)
+    - rimuovere
 
 */
 

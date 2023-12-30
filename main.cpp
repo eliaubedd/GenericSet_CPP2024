@@ -19,9 +19,28 @@ int main(int argc, char *argv[]){
     t.add(3);
     t.add(55);
     t.add(55);
-
     std::cout << t << std::endl;
-    
+    t.remove(5);
+    t.remove(4);
+    t.remove(56);
+    t.remove(3);
+    std::cout << t << std::endl;
+    std::cout << t[2];
+
+    tset<int, equal_int> t2;
+    t2.add(1);
+    t2.add(2);
+    t2.add(55);
+    t == t2;
+
+    t2.remove(55);
+    t == t2;
+    t2.add(56);
+
+    t == t2;
+
+
+
 
     return 0;
 }
