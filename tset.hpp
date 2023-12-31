@@ -294,6 +294,85 @@ public:
     }
 
 
+	class const_iterator {
+		//	
+	public:
+		typedef std::forward_iterator_tag iterator_category;
+		typedef T                         value_type;
+		typedef ptrdiff_t                 difference_type;
+		typedef const T*                  pointer;
+		typedef const T&                  reference;
+
+	
+		const_iterator() : ptr(nullptr) {}
+		
+		const_iterator(const const_iterator &other) : ptr(other.ptr) {}
+
+		const_iterator& operator=(const const_iterator &other) {
+			ptr = other.ptr;
+            return *this;
+		}
+
+		~const_iterator() {}
+
+		// Ritorna il dato riferito dall'iteratore (dereferenziamento)
+		reference operator*() const {
+			return *ptr;
+		}
+
+		// Ritorna il puntatore al dato riferito dall'iteratore
+		pointer operator->() const {
+			return ptr;
+		}
+		
+		// Operatore di iterazione post-incremento
+		const_iterator operator++(int) {
+			const_iterator tmp(*this);
+            ++ptr;
+            return tmp;
+		}
+
+		// Operatore di iterazione pre-incremento
+		const_iterator& operator++() {
+			++ptr;
+            return *this;
+		}
+
+		// Uguaglianza
+		bool operator==(const const_iterator &other) const {
+			return ptr == other.ptr;
+		}
+		
+		// Diversita'
+		bool operator!=(const const_iterator &other) const {
+			return !(other == *this);
+		}
+
+	private:
+		//Dati membro
+        const value_type* ptr;
+
+		// La classe container deve essere messa friend dell'iteratore per poter
+		// usare il costruttore di inizializzazione.
+		friend class tset;
+
+		// Costruttore privato di inizializzazione usato dalla classe container
+		// tipicamente nei metodi begin e end
+		const_iterator(const value_type* p) : ptr(p) {}
+		
+		// !!! Eventuali altri metodi privati
+		
+	}; // classe const_iterator
+	
+	// Ritorna l'iteratore all'inizio della sequenza dati
+	const_iterator begin() const {
+		return const_iterator(_darr);
+	}
+	
+	// Ritorna l'iteratore alla fine della sequenza dati
+	const_iterator end() const {
+		return const_iterator(_darr + _size);
+	}
 
     /**
         @brief Operatore di stream
@@ -313,18 +392,6 @@ public:
         }
         return os;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 };
 

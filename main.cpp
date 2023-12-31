@@ -8,8 +8,7 @@ struct equal_int {
   }
 };
 
-int main(int argc, char *argv[]){
-
+void testACaso(){
     tset<int, equal_int> t;
     t.add(5);
     t.add(4);
@@ -38,6 +37,42 @@ int main(int argc, char *argv[]){
     t2.add(56);
 
     t == t2;
+}
+
+void testIterator() {
+    tset<int, equal_int> mySet;
+
+    // Aggiungi alcuni valori al set
+    mySet.add(5);
+    mySet.add(3);
+    mySet.add(8);
+
+    std::cout << "Contenuto del set tramite iteratore:" << std::endl;
+    for (tset<int, equal_int>::const_iterator it = mySet.begin(); it != mySet.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    // Verifica di disuguaglianza tra iteratori
+    tset<int, equal_int>::const_iterator it1 = mySet.begin();
+    tset<int, equal_int>::const_iterator it2 = mySet.begin();
+    ++it2; // Incremento it2 per renderlo diverso da it1
+
+    std::cout << "it1 != it2: " << (it1 != it2) << std::endl;
+
+    // Verifica di uguaglianza tra iteratori
+    tset<int, equal_int>::const_iterator it3 = mySet.begin();
+    tset<int, equal_int>::const_iterator it4 = mySet.begin();
+
+    std::cout << "it3 == it4: " << (it3 == it4) << std::endl;
+}
+
+
+int main(int argc, char *argv[]){
+
+
+
+    testIterator();
 
 
 
