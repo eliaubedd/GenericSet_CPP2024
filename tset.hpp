@@ -251,28 +251,14 @@ public:
 
     bool operator==(const tset &set) const{
         if(_size != set._size){
-
-            #ifndef NDEBUG 
-            std::cout<<"bool ==(false)"<<std::endl;
-            #endif 
-
             return false;
         }
         else{
             for(size_type i = 0; i < _size; ++i){
                 if(!_eql(_darr[i], set._darr[i])){
-
-                    #ifndef NDEBUG 
-                    std::cout<<"bool ==(false)"<<std::endl;
-                    #endif 
-
                     return false;
                 }
             }
-            #ifndef NDEBUG 
-            std::cout<<"bool ==(true)"<<std::endl;
-            #endif 
-
             return true;
         }
     }
@@ -490,6 +476,20 @@ tset<T, Equal> operator-(tset<T, Equal> a, tset<T, Equal> b){
     return temp;
 }
 
+/**
+  @brief Salva il contenuto di un set di stringhe in un file.
+
+  Questa funzione prende un set di stringhe e un nome di file e salva il
+  contenuto del set nel file specificato. Ogni stringa del set viene scritta
+  nel file seguita da un carattere di nuova riga ('\n').
+
+  @tparam Equal Un tipo di funtore per confrontare le stringhe nel set.
+  @param s Il set di stringhe da salvare nel file.
+  @param file Il nome del file nel quale salvare il contenuto del set.
+
+  @throw Eccezione generica se si verifica un errore durante l'apertura o la
+         scrittura nel file. L'eccezione mantiene lo stato del set invariato.
+*/
 template <typename Equal>
 void save(const tset<std::string, Equal>& s, const std::string& file) {
 
@@ -524,8 +524,6 @@ void save(const tset<std::string, Equal>& s, const std::string& file) {
     - Distruttore, svuota la lista?
     - riguarda commento per documentazione della classe.
     - aggiunta _eql al copy constructor?
-    - togliere set._capacity dall'ostream (riga 224)
-    - rimuovere bool stampa dai metodi add
     - sistema i test
 
 */

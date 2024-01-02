@@ -115,10 +115,10 @@ void testFunzioneSave(){
     mySet.add("oggi?");
   
     tset<std::string, std::equal_to<std::string>> mySet2;
-    mySet.add("Buongiorno,");
-    mySet.add("dove");
-    mySet.add("stavi");
-    mySet.add("ieri?");
+    mySet2.add("Buongiorno,");
+    mySet2.add("dove");
+    mySet2.add("stavi");
+    mySet2.add("ieri?");
 
     // Salvataggio del set nel file "output.txt"
     save(mySet2, "output.txt");
