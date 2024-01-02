@@ -8,9 +8,10 @@
 
 #ifndef TSET_HPP
 #define TSET_HPP
-#include <iostream>
+#include <iostream> 
 #include <ostream>
 #include <cassert>
+#include <fstream>
 
 /**
   @brief Classe Set templata
@@ -44,11 +45,7 @@ public:
         @post _capacity == 0
         @post _darr == nullptr
     */
-    tset() : _size(0), _capacity(0), _darr(nullptr){
-        #ifndef NDEBUG 
-        std::cout<<"tset::tset()"<<std::endl;
-        #endif
-    }
+    tset() : _size(0), _capacity(0), _darr(nullptr){}
 
     /**
         @brief Distruttore
@@ -68,9 +65,6 @@ public:
         _size = 0;
         _capacity = 0;
 
-        #ifndef NDEBUG 
-        std::cout<<"tset::~tset()"<<std::endl;
-        #endif   
     }
 
     /**
@@ -101,11 +95,7 @@ public:
 
         _size = other._size;
         _capacity = other._capacity;
-        
 
-        #ifndef NDEBUG 
-        std::cout<<"tset::tset(const tset &other)"<<std::endl;
-        #endif
     }
 
     /**
@@ -129,10 +119,6 @@ public:
             this -> swap(tmp);
         }
 
-        #ifndef NDEBUG 
-        std::cout<<"tset::operator=(const tset &other)"<<std::endl;
-        #endif   
-
         return *this;
     }
     
@@ -154,9 +140,17 @@ public:
         std::swap(this->_darr, other._darr); 
         std::swap(this->_eql,other._eql);
 
-        #ifndef NDEBUG 
-        std::cout<<"void swap(tset &other)"<<std::endl;
-        #endif  
+    }
+
+    /**
+        @brief Metodo per ottenere la dimensione corrente del Set.
+
+        Questo metodo restituisce la dimensione corrente del Set, ovvero il numero di elementi presenti al suo interno.
+
+        @return La dimensione corrente del Set come unsigned int.
+    */
+    size_type getSize() const{
+        return _size;
     }
 
     /**
@@ -191,16 +185,10 @@ public:
             }
             _darr[_size++] = value;
 
-            #ifndef NDEBUG 
-            std::cout<<"bool add(true)"<<std::endl;
-            #endif 
-
             return true;
         }
         else{
-            #ifndef NDEBUG 
-            std::cout<<"bool add(false)"<<std::endl;
-            #endif 
+
             return false;
         }
     }
@@ -214,15 +202,11 @@ public:
                     } 
                 }
             }
-            #ifndef NDEBUG 
-            std::cout<<"bool remove(true)"<<std::endl;
-            #endif 
+
             _size--;
             return true;
         }
-        #ifndef NDEBUG 
-        std::cout<<"bool remove(false)"<<std::endl;
-        #endif 
+
         return false;
     }
 
@@ -386,14 +370,147 @@ public:
         @return reference allo stream di output 
     */
     friend std::ostream& operator<<(std::ostream &os, const tset &set){
-        os << set._size << " " << set._capacity << " ";
+        os << set._size << " ";
         for(typename tset::size_type i = 0; i < set._size; ++i){
             os << "(" << set._darr[i] << ") ";
         }
         return os;
     }
 
+    
+    /**
+        @brief Costruttore per creare un tset da una sequenza definita da una coppia di iteratori.
+        
+        Questo costruttore inizializza un oggetto tset con gli elementi presenti nella sequenza
+        definita dall'intervallo specificato da due iteratori: begin e end.
+        
+        @tparam Q Tipo dell'iteratore utilizzato per la sequenza di dati.
+        @param begin Iteratore che punta all'inizio della sequenza.
+        @param end Iteratore che punta alla fine della sequenza.
+        
+        @throw Eccezione generica se si verifica un errore durante l'aggiunta degli elementi al tset.
+        L'eccezione mantiene lo stato del tset invariato.
+    */
+    template <typename Q>
+    tset(Q begin, Q end) : _darr(nullptr), _capacity(0), _size(0){
+        Q curr = begin;
+        try{
+            for(; curr != end; ++curr){
+                add(static_cast<T>(*curr));
+            }
+        }
+        catch(...){
+            delete begin;
+            throw;
+        }
+    }
+
 };
+
+//FUNZIONI GLOBALI
+/**
+    @brief Filtra gli elementi di un set basandosi su un predicato fornito.
+
+    La funzione filter_out GLOBALE prende un set generico e un predicato e restituisce un nuovo set
+    contenente gli elementi del set originale che soddisfano il predicato fornito.
+
+    @tparam T Tipo degli elementi nel set.
+    @tparam Equal funtore per il confronto di uguaglianza tra elementi.
+    @tparam Pred Predicato utilizzato per filtrare gli elementi del set.
+
+    @param s Set da cui filtrare gli elementi.
+    @param p Predicato utilizzato per decidere quali elementi includere nel set risultante.
+
+    @return Un nuovo set contenente gli elementi di 's' che soddisfano il predicato 'p'.
+ */
+template <typename T, typename Equal, typename Pred>
+tset<T, Equal> filter_out(const tset<T,Equal> &s, Pred p){
+    tset<T, Equal> temp;
+    for(unsigned int i = 0; i < s.getSize(); ++i){
+        if(p(s[i])){
+            temp.add(s[i]);
+        }
+    }
+
+    return temp;
+}
+
+/**
+  @brief Concatena due set senza duplicati.
+
+  Questa funzione prende due set di tipi generici T e li concatena, creando un nuovo set
+  che contiene tutti gli elementi di entrambi i set di input, senza duplicati.
+
+  @tparam T Tipo generico degli elementi nel set.
+  @tparam Equal Oggetto funtore o funzione che verifica l'uguaglianza tra gli elementi.
+  @param a Primo set da concatenare.
+  @param b Secondo set da concatenare.
+  @return tset<T, Equal> Nuovo set contenente gli elementi dei due set di input senza duplicati.
+
+  @note La funzione crea un nuovo set in cui vengono inseriti gli elementi di 'a' seguiti dagli elementi
+        di 'b' che non sono già presenti in 'a', evitando duplicati.
+*/
+template <typename T, typename Equal>
+tset<T, Equal> operator+(tset<T, Equal> a, tset<T, Equal> b){
+    tset<T, Equal> temp;
+    for(unsigned int i = 0; i < a.getSize(); ++i){
+        temp.add(a[i]);
+    }
+    for(unsigned int i = 0; i < b.getSize(); ++i){
+        temp.add(b[i]);
+    }
+
+    return temp;
+}
+
+/**
+    @brief Operatore di differenza tra set.
+
+    Restituisce un nuovo set che contiene gli elementi presenti sia nel primo set 'a' che nel secondo set 'b'.
+
+    @tparam T Tipo degli elementi nel set.
+    @tparam Equal funtore di uguaglianza per confrontare gli elementi.
+
+    @param a Primo set su cui viene verificato il contenuto.
+    @param b Secondo set usato per identificare gli elementi comuni.
+
+    @return Set contenente gli elementi presenti sia nel set 'a' che nel set 'b'.
+
+    @note La funzione utilizza il funtore di uguaglianza 'Equal' per confrontare gli elementi all'interno dei set.
+*/
+template <typename T, typename Equal>
+tset<T, Equal> operator-(tset<T, Equal> a, tset<T, Equal> b){
+    tset<T, Equal> temp;
+    for(unsigned int i = 0; i < b.getSize(); ++i){
+        if(a.contains(b[i])){
+            temp.add(b[i]);
+        }
+    }
+
+    return temp;
+}
+
+template <typename Equal>
+void save(const tset<std::string, Equal>& s, const std::string& file) {
+
+    try{
+        std::ofstream outputFile(file);
+        for(unsigned int i = 0; i < s.getSize(); ++i){
+            outputFile << s[i] << "\n";
+        }
+        outputFile.close();
+        std::cout << "file aggiornato." << std::endl;
+    }
+    catch(...){
+        std::cerr << "impossibile aprire il file." << std::endl;
+        throw;
+    }
+}
+
+
+
+
+
 
 
 
@@ -408,7 +525,8 @@ public:
     - riguarda commento per documentazione della classe.
     - aggiunta _eql al copy constructor?
     - togliere set._capacity dall'ostream (riga 224)
-    - rimuovere
+    - rimuovere bool stampa dai metodi add
+    - sistema i test
 
 */
 

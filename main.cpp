@@ -8,6 +8,12 @@ struct equal_int {
   }
 };
 
+struct is_even {
+    bool operator()(int a) const {
+        return a % 2 == 0;
+    }
+};
+
 void testACaso(){
     tset<int, equal_int> t;
     t.add(5);
@@ -67,12 +73,66 @@ void testIterator() {
     std::cout << "it3 == it4: " << (it3 == it4) << std::endl;
 }
 
+void testFunzioniGlobali(){
+
+  tset<int, equal_int> a;
+  a.add(5);
+  a.add(4);
+  a.add(5);
+  a.add(1);
+  a.add(2);
+  a.add(3);
+  std::cout << "set a: " << a << std::endl;
+
+  //filter out:
+  tset<int, equal_int> b = filter_out(a, is_even());
+  std::cout << "filter_out(t, is_even()): " << b << std::endl;
+
+  //operator+
+  tset<int, equal_int> c;
+  c.add(21);
+  c.add(4);
+  c.add(56);
+  c.add(5);
+  c.add(7);
+  c.add(0);
+  c.add(3);
+  std::cout << "set a: " << a << std::endl;
+  std::cout << "set c: " << c << std::endl;
+  tset<int, equal_int> d;
+  d = a + c;
+  std::cout << "set a+c: " << a+c << std::endl;
+
+  //operator-
+  std::cout << "set a-c: " << a-c << std::endl;
+}
+
+void testFunzioneSave(){
+    tset<std::string, std::equal_to<std::string>> mySet;
+    mySet.add("Ciao");
+    mySet.add("come");
+    mySet.add("va");
+    mySet.add("oggi?");
+  
+    tset<std::string, std::equal_to<std::string>> mySet2;
+    mySet.add("Buongiorno,");
+    mySet.add("dove");
+    mySet.add("stavi");
+    mySet.add("ieri?");
+
+    // Salvataggio del set nel file "output.txt"
+    save(mySet2, "output.txt");
+}
 
 int main(int argc, char *argv[]){
 
 
 
-    testIterator();
+    //testIterator();
+
+    //testFunzioniGlobali();
+
+    testFunzioneSave();
 
 
 
