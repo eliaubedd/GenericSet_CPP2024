@@ -17,7 +17,9 @@
   @brief Classe Set templata
 
   Classe generica che rappresenta una collezione di dati di 
-  tipo T che non può contenere duplicati ... RIGUARDA
+  tipo T che non può contenere duplicati.
+  L'uguaglianza tra elementi di tipo T viene effettuata tramite il funtore Equal che
+  prende due valori a e b, e ritorna verso se a == b.
 */
 template <typename T, typename Equal>
 class tset {
@@ -38,8 +40,8 @@ public:
         @brief Costruttore di default
 
         1° METODO FONDAMENTALE DELLE CLASSI
-        Construttore di default che inizializza il 
-        dbuffer ad un array dinamico vuoto.
+        Construttore di default che inizializza _darr
+        ad un array dinamico vuoto.
 
         @post _size == 0
         @post _capacity == 0
@@ -71,7 +73,7 @@ public:
         @brief Costruttore di copia (Copy constructor)
 
         3° METODO FONDAMENTALE DELLE CLASSI
-        Crea un tset a partire da un altro tset
+        Crea un set a partire da un altro set
 
         @param other tset sorgente
 
@@ -102,8 +104,7 @@ public:
         @brief Operatore di assegnamento
 
         4° METODO FONDAMENTALE DELLE CLASSI
-        Operatore che compia il contenuto di un dbuffer
-        nel dbuffer corrente.
+        Operatore che compia il contenuto di set nel set corrente.
 
         @param other tset sorgente
 
@@ -162,6 +163,8 @@ public:
         @param value valore da inserire nella lista
 
         @return true se l'elemento è stato inserito correttamente, false altrimenti
+    
+        @note Se `value_type` risulta essere un tipo custom, si assume che sia definito il costruttore di default.
     */
     bool add(const value_type &value){
         if(!contains(value)){
@@ -193,6 +196,15 @@ public:
         }
     }
 
+    /**
+        @brief Metodo remove
+
+        Rimuove un elemento dal set se presente.
+
+        @param value valore da rimuovere dal set
+
+        @return true se l'elemento è stato rimosso correttamente, false se l'elemento non è presente nel set
+*/
     bool remove(const value_type &value){
         if(contains(value)){
             for(size_type i = 0; i < _size; ++i){
@@ -229,6 +241,7 @@ public:
        Controlla se l'elemento passato come parametro è presente nel set.
      
        @param value Elemento da cercare nel set.
+
        @return true se l'elemento è presente, altrimenti false.
     */
     bool contains(const value_type &value) const{
@@ -246,6 +259,7 @@ public:
         Confronta due oggetti tset per verificare l'uguaglianza.
         
         @param other Altro oggetto tset da confrontare.
+        
         @return true se i due set sono uguali, altrimenti false.
     */
 

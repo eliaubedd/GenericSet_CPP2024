@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['swap_60',['swap',['../classtset.html#a1a7f94d9d9553cf731070a26cff3779e',1,'tset']]]
+  ['remove_72',['remove',['../classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466',1,'tset']]]
 ];

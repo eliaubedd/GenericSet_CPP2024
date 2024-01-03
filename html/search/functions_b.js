@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['_7econst_5fiterator_65',['~const_iterator',['../classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c',1,'tset::const_iterator']]],
-  ['_7etset_66',['~tset',['../classtset.html#a69a7704d18e2d4d04e40b967cd3c23d3',1,'tset']]]
+  ['testfunzionesave_75',['testFunzioneSave',['../main_8cpp.html#a4dcb75f278057151f7ca12166b5014e8',1,'main.cpp']]],
+  ['testfunzioniglobali_76',['testFunzioniGlobali',['../main_8cpp.html#a4c12626518f10af0c37c589ed887d2a8',1,'main.cpp']]],
+  ['testintset_77',['testIntSet',['../main_8cpp.html#a4b054a1c7735d24d6d2a18ac076eba5b',1,'main.cpp']]],
+  ['testiterator_78',['testIterator',['../main_8cpp.html#a261ee4bae31225ff693973651094e234',1,'main.cpp']]],
+  ['testpointset_79',['testPointSet',['../main_8cpp.html#a244a617e5db4c9e220efd97fc33d7a2c',1,'main.cpp']]],
+  ['tset_80',['tset',['../classtset.html#afedf95a6ac84bcce7957cef08f1b7311',1,'tset::tset()'],['../classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf',1,'tset::tset(const tset &amp;other)'],['../classtset.html#adf461a9bf91a9c5799d3797dad5a66a3',1,'tset::tset(Q begin, Q end)']]]
 ];

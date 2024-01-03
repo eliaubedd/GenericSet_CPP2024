@@ -14,8 +14,12 @@ struct is_even {
     }
 };
 
-void testACaso(){
+void testIntSet(){
     tset<int, equal_int> t;
+
+    std::cout << "************** Test metodi su un set di interi **************" << std::endl;
+
+    std::cout << "Inserimento dei valori: 5, 4, 5, 1, 2, 55, 55" << std::endl;
     t.add(5);
     t.add(4);
     t.add(5);
@@ -24,25 +28,164 @@ void testACaso(){
     t.add(3);
     t.add(55);
     t.add(55);
+
+    std::cout << "Stampa del set con operator<< dopo add: " << std::endl;
     std::cout << t << std::endl;
+    assert(t.getSize() == 6);
+    assert(t.contains(5));
+    assert(t.contains(4));
+    assert(t.contains(1));
+    assert(t.contains(2));
+    assert(t.contains(3));
+    assert(t.contains(55));
+
+    std::cout << "Rimozione dei valori: 5, 4, 56, 3" << std::endl;
     t.remove(5);
     t.remove(4);
     t.remove(56);
     t.remove(3);
-    std::cout << t << std::endl;
-    std::cout << t[2];
 
+    std::cout << "Stampa del set con operator<< dopo add: " << std::endl;
+    std::cout << t << std::endl;
+    assert(t.getSize() == 3);
+    assert(!t.contains(5));
+    assert(!t.contains(4));
+    assert(!t.contains(56));
+    assert(!t.contains(3));
+  
+    std::cout << "Stampa con iteratori: " << std::endl;
+    tset<int, equal_int>::const_iterator ib, ie;
+    for(ib=t.begin(),ie=t.end(); ib!=ie; ++ib){
+        std::cout<<*ib<<std::endl;
+    }
+
+    std::cout << "Accesso all'iesimo elemento con operatore []: ";
+    for(unsigned int i = 0; i < t.getSize(); ++i){
+        std::cout << t[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Confronto con metodo == con set: {1, 2, 55}: ";
     tset<int, equal_int> t2;
     t2.add(1);
     t2.add(2);
     t2.add(55);
-    t == t2;
+    std::cout << (t == t2) << std::endl;
+    assert(t==t2);
 
+    std::cout << "Confronto con metodo == con set: {1, 2, 56}: ";
     t2.remove(55);
-    t == t2;
     t2.add(56);
+    std::cout << (t == t2) << std::endl;
+    assert(!(t==t2));
 
-    t == t2;
+
+    std::cout << "Costruzione set attraverso iteratori: " << std::endl;
+    int array[] = {1, 2, 3, 4, 5, 4};
+    tset<int, equal_int> tas(array, array+5);
+    std::cout << tas << std::endl;
+    assert(tas.getSize() == 5);
+    assert(tas.contains(1));
+    assert(tas.contains(2));
+    assert(tas.contains(3));
+    assert(tas.contains(4));
+    assert(tas.contains(5));
+}
+
+//TEST POINT 
+struct point {
+  int x; ///< coordinata x del punto
+  int y; ///< coordinata y del punto
+
+  point() : x(0), y(0) {}
+  point(int xx, int yy) : x(xx), y(yy) {}
+};
+
+/**
+  Ridefinizione dell'operatore di stream << per un point.
+  Necessario per l'operatore di stream della classe ordered_list.
+*/
+std::ostream &operator<<(std::ostream &os, const point &p) {
+  std::cout<<"("<<p.x<<","<<p.y<<")";
+  return os;
+}
+
+struct equal_point {
+  bool operator()(const point &p1, const point &p2) const {
+    return (p1.x==p2.x) && (p1.y==p2.y);
+  } 
+};
+
+void testPointSet(){
+
+    tset<point, equal_point> tp;
+
+    std::cout << "************** Test metodi su un set di point **************" << std::endl;
+    
+    std::cout<<"Insertimento dei valori (1,5), (3,4), (5,1), (0,0), (5,1)"<<std::endl;
+    tp.add(point(1,5));
+    tp.add(point(3,4));
+    tp.add(point(5,1));
+    tp.add(point(0,0));
+    tp.add(point(5,1));
+
+    std::cout << "Stampa del set con operator<< dopo add: " << std::endl;
+    std::cout << tp << std::endl;
+    assert(tp.getSize() == 4);
+    assert(tp.contains(point(1,5)));
+    assert(tp.contains(point(3,4)));
+    assert(tp.contains(point(5,1)));
+    assert(tp.contains(point(0,0)));
+
+    std::cout<<"Rimozione dei valori (1,5), (0,0)" << std::endl;
+    tp.remove(point(1,5));
+    tp.remove(point(0,0));
+    assert(tp.getSize() == 2);
+    assert(!(tp.contains(point(1,5))));
+    assert(!(tp.contains(point(0,0))));
+
+    std::cout << "Stampa del set con operator<< dopo rimozione: " << std::endl;
+    std::cout << tp << std::endl;
+    
+
+    std::cout << "Stampa con iteratori: " << std::endl;
+    tset<point, equal_point>::const_iterator ib, ie;
+    for(ib=tp.begin(),ie=tp.end(); ib!=ie; ++ib){
+        std::cout<<*ib<<std::endl;
+    }
+
+    std::cout << "Accesso all'iesimo elemento con operatore []: ";
+    for(unsigned int i = 0; i < tp.getSize(); ++i){
+        std::cout << tp[i] << " ";
+    }
+    std::cout << std::endl;
+       
+    tset<point, equal_point> tp2;
+    tp2.add(point(1,5));
+    tp2.add(point(3,4));
+    tp2.add(point(5,1));
+    tp2.add(point(0,0));
+    tp2.add(point(5,1));
+
+    std::cout << "Confronto con metodo == con set: (1,5), (3,4), (5,1), (0,0): ";
+    std::cout << (tp == tp2) << std::endl;
+    assert(!(tp == tp2));
+
+    tp2.remove(point(1,5));
+    tp2.remove(point(0,0));
+    std::cout << "Confronto con metodo == con set: (3,4), (5,1): ";
+    std::cout << (tp == tp2) << std::endl;
+    assert(tp == tp2);
+
+    std::cout << "Costruzione set attraverso iteratori: " << std::endl;
+    point array[] = {point(1,1), point(4,2), point(0,0), point(5,4), point(0,0)};
+    tset<point, equal_point> tas(array, array+5);
+    std::cout << tas << std::endl;
+    assert(tas.getSize() == 4);
+    assert(tas.contains(point(1,1)));
+    assert(tas.contains(point(4,2)));
+    assert(tas.contains(point(0,0)));
+    assert(tas.contains(point(5,4)));
 }
 
 void testIterator() {
@@ -126,13 +269,15 @@ void testFunzioneSave(){
 
 int main(int argc, char *argv[]){
 
+    //testIntSet();
 
+    testPointSet();
 
     //testIterator();
 
     //testFunzioniGlobali();
 
-    testFunzioneSave();
+    //testFunzioneSave();
 
 
 
