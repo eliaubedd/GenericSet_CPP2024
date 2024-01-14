@@ -4,7 +4,6 @@
 struct equal_int {
   bool operator()(int a, int b) const {
     return a==b;
-    //return (a%2==0) && (b%2==1); // Esempio particolare di ordinamento
   }
 };
 
@@ -14,6 +13,12 @@ struct is_even {
     }
 };
 
+/**
+ * @brief Test dei metodi su int set
+ * 
+ * Test dei metodi su int set
+ * 
+ */
 void testIntSet(){
     tset<int, equal_int> t;
 
@@ -45,7 +50,7 @@ void testIntSet(){
     t.remove(56);
     t.remove(3);
 
-    std::cout << "Stampa del set con operator<< dopo add: " << std::endl;
+    std::cout << "Stampa del set con operator<< dopo remove: " << std::endl;
     std::cout << t << std::endl;
     assert(t.getSize() == 3);
     assert(!t.contains(5));
@@ -92,6 +97,88 @@ void testIntSet(){
     assert(tas.contains(5));
 }
 
+struct equal_string {
+  bool operator()(const std::string &a, const std::string &b) const {
+    return (a==b);
+  } 
+};
+
+/**
+ * @brief Test dei metodi su std::string set
+ * 
+ * Test dei metodi su std::string set
+ * 
+ */
+void testStringSet(){
+  tset<std::string, equal_string> ts;
+
+    std::cout << "************** Test metodi su un set di string **************" << std::endl;
+
+    std::cout << "Inserimento dei valori: 'ciao', 'come', 'stai', 'oggi', 'ciao'" << std::endl;
+    ts.add("ciao");
+    ts.add("come");
+    ts.add("stai");
+    ts.add("oggi");
+    ts.add("ciao");
+
+    std::cout << "Stampa del set con operator<< dopo add: " << std::endl;
+    std::cout << ts << std::endl;
+    assert(ts.getSize() == 4);
+    assert(ts.contains("ciao"));
+    assert(ts.contains("come"));
+    assert(ts.contains("stai"));
+    assert(ts.contains("oggi"));
+ 
+
+    std::cout << "Rimozione dei valori: 'ciao', 'stai'" << std::endl;
+    ts.remove("ciao");
+    ts.remove("stai");
+  
+
+    std::cout << "Stampa del set con operator<< dopo remove: " << std::endl;
+    std::cout << ts << std::endl;
+    assert(ts.getSize() == 2);
+    assert(!ts.contains("ciao"));
+    assert(!ts.contains("stai"));
+  
+    std::cout << "Stampa con iteratori: " << std::endl;
+    tset<std::string, equal_string>::const_iterator ib, ie;
+    for(ib=ts.begin(),ie=ts.end(); ib!=ie; ++ib){
+        std::cout<<*ib<<std::endl;
+    }
+
+    std::cout << "Accesso all'iesimo elemento con operatore []: ";
+    for(unsigned int i = 0; i < ts.getSize(); ++i){
+        std::cout << ts[i] << " ";
+    }
+    std::cout << std::endl;
+    
+    
+    std::cout << "Confronto con metodo == con set: {'come', 'oggi'}: ";
+    tset<std::string, equal_string> t2;
+    t2.add("come");
+    t2.add("oggi");
+    std::cout << (ts == t2) << std::endl;
+    assert(ts==t2);
+
+    std::cout << "Confronto con metodo == con set: {'come', 'ieri'}: ";
+    t2.remove("oggi");
+    t2.add("ieri");
+    std::cout << (ts == t2) << std::endl;
+    assert(!(ts==t2));
+
+
+    std::cout << "Costruzione set attraverso iteratori: " << std::endl;
+    std::string array[] = {"ciao", "come", "stai", "oggi"};
+    tset<std::string, equal_string> tas(array, array+4);
+    std::cout << tas << std::endl;
+    assert(tas.getSize() == 4);
+    assert(tas.contains("ciao"));
+    assert(tas.contains("come"));
+    assert(tas.contains("stai"));
+    assert(tas.contains("oggi"));
+}
+
 //TEST POINT 
 struct point {
   int x; ///< coordinata x del punto
@@ -116,6 +203,12 @@ struct equal_point {
   } 
 };
 
+/**
+ * @brief Test dei metodi su point set
+ * 
+ * Test dei metodi su point set
+ * 
+ */
 void testPointSet(){
 
     tset<point, equal_point> tp;
@@ -144,7 +237,7 @@ void testPointSet(){
     assert(!(tp.contains(point(1,5))));
     assert(!(tp.contains(point(0,0))));
 
-    std::cout << "Stampa del set con operator<< dopo rimozione: " << std::endl;
+    std::cout << "Stampa del set con operator<< dopo remove: " << std::endl;
     std::cout << tp << std::endl;
     
 
@@ -188,6 +281,12 @@ void testPointSet(){
     assert(tas.contains(point(5,4)));
 }
 
+/**
+ * @brief Test dei metodi di iteratori
+ * 
+ * Test dei metodi di iteratori
+ * 
+ */
 void testIterator() {
     tset<int, equal_int> mySet;
 
@@ -216,6 +315,12 @@ void testIterator() {
     std::cout << "it3 == it4: " << (it3 == it4) << std::endl;
 }
 
+/**
+ * @brief Test dei metodi delle funzioni globali
+ * 
+ * Test dei metodi delle funzioni globali
+ * 
+ */
 void testFunzioniGlobali(){
 
   tset<int, equal_int> a;
@@ -250,6 +355,12 @@ void testFunzioniGlobali(){
   std::cout << "set a-c: " << a-c << std::endl;
 }
 
+/**
+ * @brief Test funzione save
+ * 
+ * Test funzione save
+ * 
+ */
 void testFunzioneSave(){
     tset<std::string, std::equal_to<std::string>> mySet;
     mySet.add("Ciao");
@@ -269,18 +380,17 @@ void testFunzioneSave(){
 
 int main(int argc, char *argv[]){
 
-    //testIntSet();
+    testIntSet();
+
+    testStringSet();
 
     testPointSet();
 
-    //testIterator();
+    testIterator();
 
-    //testFunzioniGlobali();
+    testFunzioniGlobali();
 
-    //testFunzioneSave();
-
-
-
+    testFunzioneSave();
 
     return 0;
 }

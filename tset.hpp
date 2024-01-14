@@ -521,25 +521,4 @@ void save(const tset<std::string, Equal>& s, const std::string& file) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-/*
-    //////////////
-    ////TO DO////
-    /////////////
-
-    - Distruttore, svuota la lista?
-    - riguarda commento per documentazione della classe.
-    - aggiunta _eql al copy constructor?
-    - sistema i test
-
-*/
-
 #endif
