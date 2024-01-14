@@ -61,9 +61,13 @@ public:
         @post _darr == nullptrr
     */
     ~tset() {
-        delete[] _darr;
-
-        _darr = nullptr;
+        
+        if(_darr != nullptr)
+        {
+            delete[] _darr;
+            mData = nullptr;
+        }
+        
         _size = 0;
         _capacity = 0;
 

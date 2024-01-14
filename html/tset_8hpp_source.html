@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tset.hpp Source File</title>
+<title>Generic_set: tset.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">My Project
+   <div id="projectname">Generic_set
    </div>
   </td>
  </tr>
@@ -91,347 +91,333 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classtset.html#afedf95a6ac84bcce7957cef08f1b7311">   50</a></span>&#160;    <a class="code" href="classtset.html#afedf95a6ac84bcce7957cef08f1b7311">tset</a>() : _size(0), _capacity(0), _darr(nullptr){}</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classtset.html#a69a7704d18e2d4d04e40b967cd3c23d3">   63</a></span>&#160;    <a class="code" href="classtset.html#a69a7704d18e2d4d04e40b967cd3c23d3">~tset</a>() {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">delete</span>[] _darr;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        _darr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        _size = 0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        _capacity = 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf">   84</a></span>&#160;    <a class="code" href="classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf">tset</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;other) : _darr(nullptr), _size(0), _capacity(0){</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        _darr = <span class="keyword">new</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>[other._capacity];</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; other._size; ++i){</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                _darr[i] = other._darr[i];</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">catch</span>(...){</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">delete</span> [] _darr;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            _darr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">throw</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        _size = other._size;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        _capacity = other._capacity;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="classtset.html#a5344a5a12d66dfb6853f7fdcebcd3515">  117</a></span>&#160;    <a class="code" href="classtset.html">tset</a>&amp; <a class="code" href="classtset.html#a5344a5a12d66dfb6853f7fdcebcd3515">operator=</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;other){</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;other){</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <a class="code" href="classtset.html">tset</a> tmp(other);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">this</span> -&gt; <a class="code" href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">swap</a>(tmp);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    </div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">  138</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">swap</a>(<a class="code" href="classtset.html">tset</a> &amp;other){</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        std::swap(this-&gt;_size, other._size);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        std::swap(this-&gt;_capacity, other._capacity);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        std::swap(this-&gt;_darr, other._darr); </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        std::swap(this-&gt;_eql,other._eql);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">  153</a></span>&#160;    <a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> <a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>()<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span> _size;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">  169</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(<span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a> &amp;value){</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(value)){</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">if</span>(_size == _capacity){</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                _capacity += 5;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>* newDarr = <span class="keyword">new</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>[_capacity];</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                        newDarr[i] = _darr[i];</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    }</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keywordflow">catch</span>(...){</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    <span class="keyword">delete</span> [] newDarr;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    newDarr = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    <span class="keywordflow">throw</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keyword">delete</span> [] _darr;</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                _darr = newDarr;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            _darr[_size++] = value;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">if</span>(_darr != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">delete</span>[] _darr;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            mData = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        _size = 0;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        _capacity = 0;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf">   88</a></span>&#160;    <a class="code" href="classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf">tset</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;other) : _darr(nullptr), _size(0), _capacity(0){</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        _darr = <span class="keyword">new</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>[other._capacity];</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; other._size; ++i){</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                _darr[i] = other._darr[i];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">catch</span>(...){</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">delete</span> [] _darr;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            _darr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        _size = other._size;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        _capacity = other._capacity;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classtset.html#a5344a5a12d66dfb6853f7fdcebcd3515">  121</a></span>&#160;    <a class="code" href="classtset.html">tset</a>&amp; <a class="code" href="classtset.html#a5344a5a12d66dfb6853f7fdcebcd3515">operator=</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;other){</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">if</span>(<span class="keyword">this</span> != &amp;other){</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="classtset.html">tset</a> tmp(other);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">this</span> -&gt; <a class="code" href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">swap</a>(tmp);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">  142</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">swap</a>(<a class="code" href="classtset.html">tset</a> &amp;other){</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        std::swap(this-&gt;_size, other._size);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        std::swap(this-&gt;_capacity, other._capacity);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        std::swap(this-&gt;_darr, other._darr); </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        std::swap(this-&gt;_eql,other._eql);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">  157</a></span>&#160;    <a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> <a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>()<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">return</span> _size;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">  173</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(<span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a> &amp;value){</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>(!<a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(value)){</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">if</span>(_size == _capacity){</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                _capacity += 5;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>* newDarr = <span class="keyword">new</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>[_capacity];</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        newDarr[i] = _darr[i];</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <span class="keywordflow">catch</span>(...){</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    <span class="keyword">delete</span> [] newDarr;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    newDarr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keyword">delete</span> [] _darr;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                _darr = newDarr;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            _darr[_size++] = value;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">else</span>{</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466">  208</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466">remove</a>(<span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a> &amp;value){</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(value)){</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">if</span>(_eql(_darr[i], value)){</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> j = i; j &lt; _size - 1; j++){</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        _darr[j] = _darr[j + 1];</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    } </div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            _size--;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466">  212</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466">remove</a>(<span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a> &amp;value){</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(value)){</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">if</span>(_eql(_darr[i], value)){</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> j = i; j &lt; _size - 1; j++){</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        _darr[j] = _darr[j + 1];</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    } </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="classtset.html#a5924cad3d5fc5e68efbda045ef48e415">  233</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>&amp; <a class="code" href="classtset.html#a5924cad3d5fc5e68efbda045ef48e415">operator[]</a>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> index)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        assert(index &lt; _size);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">return</span> _darr[index];</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">  247</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(<span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a> &amp;value)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">if</span>(_eql(_darr[i], value)){</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="classtset.html#ae51aa5730fd8f3e39e33b109d4e58df0">  266</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#ae51aa5730fd8f3e39e33b109d4e58df0">operator==</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;set)<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <span class="keywordflow">if</span>(_size != set._size){</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">else</span>{</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keywordflow">if</span>(!_eql(_darr[i], set._darr[i])){</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                }</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00281"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html">  281</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> {</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="comment">//  </span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a0c0fc8f0b2483ab137d06abcd6c2edb1">  284</a></span>&#160;        <span class="keyword">typedef</span> std::forward_iterator_tag <a class="code" href="classtset_1_1const__iterator.html#a0c0fc8f0b2483ab137d06abcd6c2edb1">iterator_category</a>;</div>
-<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">  285</a></span>&#160;        <span class="keyword">typedef</span> T                         <a class="code" href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">value_type</a>;</div>
-<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ac495d4c396625faefe55de7ab1461c16">  286</a></span>&#160;        <span class="keyword">typedef</span> ptrdiff_t                 <a class="code" href="classtset_1_1const__iterator.html#ac495d4c396625faefe55de7ab1461c16">difference_type</a>;</div>
-<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">  287</a></span>&#160;        <span class="keyword">typedef</span> <span class="keyword">const</span> T*                  <a class="code" href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">pointer</a>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">  288</a></span>&#160;        <span class="keyword">typedef</span> <span class="keyword">const</span> T&amp;                  <a class="code" href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">reference</a>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    </div>
-<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">  291</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">const_iterator</a>() : ptr(nullptr) {}</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        </div>
-<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ae50724f5db59989e297b079cd5d777c2">  293</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#ae50724f5db59989e297b079cd5d777c2">const_iterator</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other) : ptr(other.ptr) {}</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a3223edceb6f69fcd68fdee752f566c01">  295</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>&amp; <a class="code" href="classtset_1_1const__iterator.html#a3223edceb6f69fcd68fdee752f566c01">operator=</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other) {</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            ptr = other.ptr;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c">  300</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c">~const_iterator</a>() {}</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="comment">// Ritorna il dato riferito dall&#39;iteratore (dereferenziamento)</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ac861c7b75129ca476e267d7d0bebdfb8">  303</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">reference</a> <a class="code" href="classtset_1_1const__iterator.html#ac861c7b75129ca476e267d7d0bebdfb8">operator*</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">return</span> *ptr;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="comment">// Ritorna il puntatore al dato riferito dall&#39;iteratore</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ab14fce81702b8cde51040046ec4f94b9">  308</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">pointer</a> <a class="code" href="classtset_1_1const__iterator.html#ab14fce81702b8cde51040046ec4f94b9">operator-&gt;</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        </div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="comment">// Operatore di iterazione post-incremento</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ad40f45c3446cd57c39834505e8fc67ad">  313</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> <a class="code" href="classtset_1_1const__iterator.html#ad40f45c3446cd57c39834505e8fc67ad">operator++</a>(<span class="keywordtype">int</span>) {</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> tmp(*<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            ++ptr;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="comment">// Operatore di iterazione pre-incremento</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a59b4bfa5154e84953462f7e5fb301900">  320</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>&amp; <a class="code" href="classtset_1_1const__iterator.html#a59b4bfa5154e84953462f7e5fb301900">operator++</a>() {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            ++ptr;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        }</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="comment">// Uguaglianza</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a73a8da8f03f823c4f21c49071ef64764">  326</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classtset_1_1const__iterator.html#a73a8da8f03f823c4f21c49071ef64764">operator==</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">return</span> ptr == other.ptr;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <span class="comment">// Diversita&#39;</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a2c0bcdfcb374d7fbffbd2c3704fc2c6d">  331</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classtset_1_1const__iterator.html#a2c0bcdfcb374d7fbffbd2c3704fc2c6d">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <span class="keywordflow">return</span> !(other == *<span class="keyword">this</span>);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="comment">//Dati membro</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>* ptr;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            _size--;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="classtset.html#a5924cad3d5fc5e68efbda045ef48e415">  237</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>&amp; <a class="code" href="classtset.html#a5924cad3d5fc5e68efbda045ef48e415">operator[]</a>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> index)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        assert(index &lt; _size);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">return</span> _darr[index];</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">  251</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(<span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a> &amp;value)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">if</span>(_eql(_darr[i], value)){</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="classtset.html#ae51aa5730fd8f3e39e33b109d4e58df0">  270</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classtset.html#ae51aa5730fd8f3e39e33b109d4e58df0">operator==</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;set)<span class="keyword"> const</span>{</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">if</span>(_size != set._size){</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">else</span>{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">for</span>(<a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">size_type</a> i = 0; i &lt; _size; ++i){</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">if</span>(!_eql(_darr[i], set._darr[i])){</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html">  285</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="comment">//  </span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a0c0fc8f0b2483ab137d06abcd6c2edb1">  288</a></span>&#160;        <span class="keyword">typedef</span> std::forward_iterator_tag <a class="code" href="classtset_1_1const__iterator.html#a0c0fc8f0b2483ab137d06abcd6c2edb1">iterator_category</a>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">  289</a></span>&#160;        <span class="keyword">typedef</span> T                         <a class="code" href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">value_type</a>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ac495d4c396625faefe55de7ab1461c16">  290</a></span>&#160;        <span class="keyword">typedef</span> ptrdiff_t                 <a class="code" href="classtset_1_1const__iterator.html#ac495d4c396625faefe55de7ab1461c16">difference_type</a>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">  291</a></span>&#160;        <span class="keyword">typedef</span> <span class="keyword">const</span> T*                  <a class="code" href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">pointer</a>;</div>
+<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">  292</a></span>&#160;        <span class="keyword">typedef</span> <span class="keyword">const</span> T&amp;                  <a class="code" href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">reference</a>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    </div>
+<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">  295</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">const_iterator</a>() : ptr(nullptr) {}</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        </div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ae50724f5db59989e297b079cd5d777c2">  297</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#ae50724f5db59989e297b079cd5d777c2">const_iterator</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other) : ptr(other.ptr) {}</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a3223edceb6f69fcd68fdee752f566c01">  299</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>&amp; <a class="code" href="classtset_1_1const__iterator.html#a3223edceb6f69fcd68fdee752f566c01">operator=</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            ptr = other.ptr;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c">  304</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c">~const_iterator</a>() {}</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// Ritorna il dato riferito dall&#39;iteratore (dereferenziamento)</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ac861c7b75129ca476e267d7d0bebdfb8">  307</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">reference</a> <a class="code" href="classtset_1_1const__iterator.html#ac861c7b75129ca476e267d7d0bebdfb8">operator*</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordflow">return</span> *ptr;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="comment">// Ritorna il puntatore al dato riferito dall&#39;iteratore</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ab14fce81702b8cde51040046ec4f94b9">  312</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">pointer</a> <a class="code" href="classtset_1_1const__iterator.html#ab14fce81702b8cde51040046ec4f94b9">operator-&gt;</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">return</span> ptr;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="comment">// Operatore di iterazione post-incremento</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#ad40f45c3446cd57c39834505e8fc67ad">  317</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> <a class="code" href="classtset_1_1const__iterator.html#ad40f45c3446cd57c39834505e8fc67ad">operator++</a>(<span class="keywordtype">int</span>) {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> tmp(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            ++ptr;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="comment">// Operatore di iterazione pre-incremento</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a59b4bfa5154e84953462f7e5fb301900">  324</a></span>&#160;        <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>&amp; <a class="code" href="classtset_1_1const__iterator.html#a59b4bfa5154e84953462f7e5fb301900">operator++</a>() {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            ++ptr;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="comment">// Uguaglianza</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a73a8da8f03f823c4f21c49071ef64764">  330</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classtset_1_1const__iterator.html#a73a8da8f03f823c4f21c49071ef64764">operator==</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordflow">return</span> ptr == other.ptr;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="comment">// Diversita&#39;</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a2c0bcdfcb374d7fbffbd2c3704fc2c6d">  335</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classtset_1_1const__iterator.html#a2c0bcdfcb374d7fbffbd2c3704fc2c6d">operator!=</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordflow">return</span> !(other == *<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        }</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="comment">// La classe container deve essere messa friend dell&#39;iteratore per poter</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">// usare il costruttore di inizializzazione.</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a7c0519d4803ace43221ee6a7a661d972">  341</a></span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classtset.html">tset</a>;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">//Dati membro</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="keyword">const</span> <a class="code" href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">value_type</a>* ptr;</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">// Costruttore privato di inizializzazione usato dalla classe container</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="comment">// tipicamente nei metodi begin e end</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">const_iterator</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">value_type</a>* p) : ptr(p) {}</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        </div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="comment">// !!! Eventuali altri metodi privati</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        </div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    }; <span class="comment">// classe const_iterator</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="comment">// Ritorna l&#39;iteratore all&#39;inizio della sequenza dati</span></div>
-<div class="line"><a name="l00352"></a><span class="lineno"><a class="line" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">  352</a></span>&#160;    <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>(_darr);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="comment">// Ritorna l&#39;iteratore alla fine della sequenza dati</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">  357</a></span>&#160;    <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> <a class="code" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">end</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>(_darr + _size);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    }</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
-<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="classtset.html#aaa53c5feab0cfe2f0cc04c86ecd75e3e">  372</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classtset.html#aaa53c5feab0cfe2f0cc04c86ecd75e3e">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;set){</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        os &lt;&lt; set._size &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">typename</span> <a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">tset::size_type</a> i = 0; i &lt; set._size; ++i){</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            os &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; set._darr[i] &lt;&lt; <span class="stringliteral">&quot;) &quot;</span>;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        }</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="keywordflow">return</span> os;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    }</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Q&gt;</div>
-<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="classtset.html#adf461a9bf91a9c5799d3797dad5a66a3">  395</a></span>&#160;    <a class="code" href="classtset.html#adf461a9bf91a9c5799d3797dad5a66a3">tset</a>(Q <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>, Q <a class="code" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">end</a>) : _darr(nullptr), _capacity(0), _size(0){</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        Q curr = <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <span class="keywordflow">for</span>(; curr != <a class="code" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">end</a>; ++curr){</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                <a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(*curr));</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            }</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        }</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">catch</span>(...){</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="comment">// La classe container deve essere messa friend dell&#39;iteratore per poter</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="comment">// usare il costruttore di inizializzazione.</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="classtset_1_1const__iterator.html#a7c0519d4803ace43221ee6a7a661d972">  345</a></span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classtset.html">tset</a>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="comment">// Costruttore privato di inizializzazione usato dalla classe container</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="comment">// tipicamente nei metodi begin e end</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <a class="code" href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">const_iterator</a>(<span class="keyword">const</span> <a class="code" href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">value_type</a>* p) : ptr(p) {}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="comment">// !!! Eventuali altri metodi privati</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    }; <span class="comment">// classe const_iterator</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="comment">// Ritorna l&#39;iteratore all&#39;inizio della sequenza dati</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">  356</a></span>&#160;    <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>(_darr);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="comment">// Ritorna l&#39;iteratore alla fine della sequenza dati</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno"><a class="line" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">  361</a></span>&#160;    <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a> <a class="code" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">end</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classtset_1_1const__iterator.html">const_iterator</a>(_darr + _size);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno"><a class="line" href="classtset.html#aaa53c5feab0cfe2f0cc04c86ecd75e3e">  376</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classtset.html#aaa53c5feab0cfe2f0cc04c86ecd75e3e">operator&lt;&lt;</a>(std::ostream &amp;os, <span class="keyword">const</span> <a class="code" href="classtset.html">tset</a> &amp;set){</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        os &lt;&lt; set._size &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">for</span>(<span class="keyword">typename</span> <a class="code" href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">tset::size_type</a> i = 0; i &lt; set._size; ++i){</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            os &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; set._darr[i] &lt;&lt; <span class="stringliteral">&quot;) &quot;</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    </div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Q&gt;</div>
+<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="classtset.html#adf461a9bf91a9c5799d3797dad5a66a3">  399</a></span>&#160;    <a class="code" href="classtset.html#adf461a9bf91a9c5799d3797dad5a66a3">tset</a>(Q <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>, Q <a class="code" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">end</a>) : _darr(nullptr), _capacity(0), _size(0){</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        Q curr = <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordflow">for</span>(; curr != <a class="code" href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">end</a>; ++curr){</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                <a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(<span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(*curr));</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            }</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;};</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="comment">//FUNZIONI GLOBALI</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Equal, <span class="keyword">typename</span> Pred&gt;</div>
-<div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a6b205646c3a964dcf325c4c9f0b4481a">  427</a></span>&#160;<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> <a class="code" href="tset_8hpp.html#a6b205646c3a964dcf325c4c9f0b4481a">filter_out</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset&lt;T,Equal&gt;</a> &amp;s, Pred p){</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> temp;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; s.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="keywordflow">if</span>(p(s[i])){</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(s[i]);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        }</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    }</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">return</span> temp;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;}</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Equal&gt;</div>
-<div class="line"><a name="l00454"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a8a7c27d3d63a7fecaadb7a3f8206c1c4">  454</a></span>&#160;<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> <a class="code" href="tset_8hpp.html#a8a7c27d3d63a7fecaadb7a3f8206c1c4">operator+</a>(<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> a, <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> b){</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> temp;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; a.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(a[i]);</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    }</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; b.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(b[i]);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    }</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">return</span> temp;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;}</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Equal&gt;</div>
-<div class="line"><a name="l00482"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a5e336c13341ed2686bc75d9d7538f4fd">  482</a></span>&#160;<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> <a class="code" href="tset_8hpp.html#a5e336c13341ed2686bc75d9d7538f4fd">operator-</a>(<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> a, <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> b){</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> temp;</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; b.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="keywordflow">if</span>(a.<a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(b[i])){</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(b[i]);</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        }</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    }</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <span class="keywordflow">return</span> temp;</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;}</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Equal&gt;</div>
-<div class="line"><a name="l00508"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a6fdee6b80e43e9aac06e00bb94b08387">  508</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tset_8hpp.html#a6fdee6b80e43e9aac06e00bb94b08387">save</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset&lt;std::string, Equal&gt;</a>&amp; s, <span class="keyword">const</span> std::string&amp; file) {</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <span class="keywordflow">try</span>{</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        std::ofstream outputFile(file);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; s.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            outputFile &lt;&lt; s[i] &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        }</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        outputFile.close();</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;file aggiornato.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    }</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="keywordflow">catch</span>(...){</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;impossibile aprire il file.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="keywordflow">catch</span>(...){</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <span class="keyword">delete</span> <a class="code" href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">begin</a>;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    }</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;};</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment">//FUNZIONI GLOBALI</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Equal, <span class="keyword">typename</span> Pred&gt;</div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a6b205646c3a964dcf325c4c9f0b4481a">  431</a></span>&#160;<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> <a class="code" href="tset_8hpp.html#a6b205646c3a964dcf325c4c9f0b4481a">filter_out</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset&lt;T,Equal&gt;</a> &amp;s, Pred p){</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> temp;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; s.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="keywordflow">if</span>(p(s[i])){</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(s[i]);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordflow">return</span> temp;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Equal&gt;</div>
+<div class="line"><a name="l00458"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a8a7c27d3d63a7fecaadb7a3f8206c1c4">  458</a></span>&#160;<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> <a class="code" href="tset_8hpp.html#a8a7c27d3d63a7fecaadb7a3f8206c1c4">operator+</a>(<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> a, <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> b){</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> temp;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; a.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(a[i]);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; b.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(b[i]);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="keywordflow">return</span> temp;</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;}</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Equal&gt;</div>
+<div class="line"><a name="l00486"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a5e336c13341ed2686bc75d9d7538f4fd">  486</a></span>&#160;<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> <a class="code" href="tset_8hpp.html#a5e336c13341ed2686bc75d9d7538f4fd">operator-</a>(<a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> a, <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> b){</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <a class="code" href="classtset.html">tset&lt;T, Equal&gt;</a> temp;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; b.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        <span class="keywordflow">if</span>(a.<a class="code" href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">contains</a>(b[i])){</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            temp.<a class="code" href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">add</a>(b[i]);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keywordflow">return</span> temp;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;}</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> Equal&gt;</div>
+<div class="line"><a name="l00512"></a><span class="lineno"><a class="line" href="tset_8hpp.html#a6fdee6b80e43e9aac06e00bb94b08387">  512</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="tset_8hpp.html#a6fdee6b80e43e9aac06e00bb94b08387">save</a>(<span class="keyword">const</span> <a class="code" href="classtset.html">tset&lt;std::string, Equal&gt;</a>&amp; s, <span class="keyword">const</span> std::string&amp; file) {</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    <span class="keywordflow">try</span>{</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        std::ofstream outputFile(file);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; s.<a class="code" href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">getSize</a>(); ++i){</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            outputFile &lt;&lt; s[i] &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        }</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        outputFile.close();</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;file aggiornato.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    }</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;}</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; </div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    <span class="keywordflow">catch</span>(...){</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        std::cerr &lt;&lt; <span class="stringliteral">&quot;impossibile aprire il file.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;}</div>
 <div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160; </div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="comment">    - Distruttore, svuota la lista?</span></div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="comment">    - riguarda commento per documentazione della classe.</span></div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="comment">    - aggiunta _eql al copy constructor?</span></div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="comment">    - sistema i test</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160; </div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html"><div class="ttname"><a href="classtset_1_1const__iterator.html">tset::const_iterator</a></div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00281">tset.hpp:281</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a0c0fc8f0b2483ab137d06abcd6c2edb1"><div class="ttname"><a href="classtset_1_1const__iterator.html#a0c0fc8f0b2483ab137d06abcd6c2edb1">tset::const_iterator::iterator_category</a></div><div class="ttdeci">std::forward_iterator_tag iterator_category</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00284">tset.hpp:284</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a1d00e4e6a676431075da9926ea792076"><div class="ttname"><a href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">tset::const_iterator::reference</a></div><div class="ttdeci">const T &amp; reference</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00288">tset.hpp:288</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a2c0bcdfcb374d7fbffbd2c3704fc2c6d"><div class="ttname"><a href="classtset_1_1const__iterator.html#a2c0bcdfcb374d7fbffbd2c3704fc2c6d">tset::const_iterator::operator!=</a></div><div class="ttdeci">bool operator!=(const const_iterator &amp;other) const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00331">tset.hpp:331</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a3223edceb6f69fcd68fdee752f566c01"><div class="ttname"><a href="classtset_1_1const__iterator.html#a3223edceb6f69fcd68fdee752f566c01">tset::const_iterator::operator=</a></div><div class="ttdeci">const_iterator &amp; operator=(const const_iterator &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00295">tset.hpp:295</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a59b4bfa5154e84953462f7e5fb301900"><div class="ttname"><a href="classtset_1_1const__iterator.html#a59b4bfa5154e84953462f7e5fb301900">tset::const_iterator::operator++</a></div><div class="ttdeci">const_iterator &amp; operator++()</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00320">tset.hpp:320</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a73a8da8f03f823c4f21c49071ef64764"><div class="ttname"><a href="classtset_1_1const__iterator.html#a73a8da8f03f823c4f21c49071ef64764">tset::const_iterator::operator==</a></div><div class="ttdeci">bool operator==(const const_iterator &amp;other) const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00326">tset.hpp:326</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a87aaa71bf207337b2e681bf626a9f85c"><div class="ttname"><a href="classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c">tset::const_iterator::~const_iterator</a></div><div class="ttdeci">~const_iterator()</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00300">tset.hpp:300</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_a96f5b68ee08c9452c0b541fa516c0161"><div class="ttname"><a href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">tset::const_iterator::value_type</a></div><div class="ttdeci">T value_type</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00285">tset.hpp:285</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_aa4afc50accd2912f4e308dda93023ddc"><div class="ttname"><a href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">tset::const_iterator::const_iterator</a></div><div class="ttdeci">const_iterator()</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00291">tset.hpp:291</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_ab14fce81702b8cde51040046ec4f94b9"><div class="ttname"><a href="classtset_1_1const__iterator.html#ab14fce81702b8cde51040046ec4f94b9">tset::const_iterator::operator-&gt;</a></div><div class="ttdeci">pointer operator-&gt;() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00308">tset.hpp:308</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_ac495d4c396625faefe55de7ab1461c16"><div class="ttname"><a href="classtset_1_1const__iterator.html#ac495d4c396625faefe55de7ab1461c16">tset::const_iterator::difference_type</a></div><div class="ttdeci">ptrdiff_t difference_type</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00286">tset.hpp:286</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_ac861c7b75129ca476e267d7d0bebdfb8"><div class="ttname"><a href="classtset_1_1const__iterator.html#ac861c7b75129ca476e267d7d0bebdfb8">tset::const_iterator::operator*</a></div><div class="ttdeci">reference operator*() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00303">tset.hpp:303</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_ad40f45c3446cd57c39834505e8fc67ad"><div class="ttname"><a href="classtset_1_1const__iterator.html#ad40f45c3446cd57c39834505e8fc67ad">tset::const_iterator::operator++</a></div><div class="ttdeci">const_iterator operator++(int)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00313">tset.hpp:313</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_ae50724f5db59989e297b079cd5d777c2"><div class="ttname"><a href="classtset_1_1const__iterator.html#ae50724f5db59989e297b079cd5d777c2">tset::const_iterator::const_iterator</a></div><div class="ttdeci">const_iterator(const const_iterator &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00293">tset.hpp:293</a></div></div>
-<div class="ttc" id="aclasstset_1_1const__iterator_html_aecae35f9a6ed8170625ff1d33b7b64f3"><div class="ttname"><a href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">tset::const_iterator::pointer</a></div><div class="ttdeci">const T * pointer</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00287">tset.hpp:287</a></div></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html"><div class="ttname"><a href="classtset_1_1const__iterator.html">tset::const_iterator</a></div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00285">tset.hpp:285</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a0c0fc8f0b2483ab137d06abcd6c2edb1"><div class="ttname"><a href="classtset_1_1const__iterator.html#a0c0fc8f0b2483ab137d06abcd6c2edb1">tset::const_iterator::iterator_category</a></div><div class="ttdeci">std::forward_iterator_tag iterator_category</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00288">tset.hpp:288</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a1d00e4e6a676431075da9926ea792076"><div class="ttname"><a href="classtset_1_1const__iterator.html#a1d00e4e6a676431075da9926ea792076">tset::const_iterator::reference</a></div><div class="ttdeci">const T &amp; reference</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00292">tset.hpp:292</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a2c0bcdfcb374d7fbffbd2c3704fc2c6d"><div class="ttname"><a href="classtset_1_1const__iterator.html#a2c0bcdfcb374d7fbffbd2c3704fc2c6d">tset::const_iterator::operator!=</a></div><div class="ttdeci">bool operator!=(const const_iterator &amp;other) const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00335">tset.hpp:335</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a3223edceb6f69fcd68fdee752f566c01"><div class="ttname"><a href="classtset_1_1const__iterator.html#a3223edceb6f69fcd68fdee752f566c01">tset::const_iterator::operator=</a></div><div class="ttdeci">const_iterator &amp; operator=(const const_iterator &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00299">tset.hpp:299</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a59b4bfa5154e84953462f7e5fb301900"><div class="ttname"><a href="classtset_1_1const__iterator.html#a59b4bfa5154e84953462f7e5fb301900">tset::const_iterator::operator++</a></div><div class="ttdeci">const_iterator &amp; operator++()</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00324">tset.hpp:324</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a73a8da8f03f823c4f21c49071ef64764"><div class="ttname"><a href="classtset_1_1const__iterator.html#a73a8da8f03f823c4f21c49071ef64764">tset::const_iterator::operator==</a></div><div class="ttdeci">bool operator==(const const_iterator &amp;other) const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00330">tset.hpp:330</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a87aaa71bf207337b2e681bf626a9f85c"><div class="ttname"><a href="classtset_1_1const__iterator.html#a87aaa71bf207337b2e681bf626a9f85c">tset::const_iterator::~const_iterator</a></div><div class="ttdeci">~const_iterator()</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00304">tset.hpp:304</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_a96f5b68ee08c9452c0b541fa516c0161"><div class="ttname"><a href="classtset_1_1const__iterator.html#a96f5b68ee08c9452c0b541fa516c0161">tset::const_iterator::value_type</a></div><div class="ttdeci">T value_type</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00289">tset.hpp:289</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_aa4afc50accd2912f4e308dda93023ddc"><div class="ttname"><a href="classtset_1_1const__iterator.html#aa4afc50accd2912f4e308dda93023ddc">tset::const_iterator::const_iterator</a></div><div class="ttdeci">const_iterator()</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00295">tset.hpp:295</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_ab14fce81702b8cde51040046ec4f94b9"><div class="ttname"><a href="classtset_1_1const__iterator.html#ab14fce81702b8cde51040046ec4f94b9">tset::const_iterator::operator-&gt;</a></div><div class="ttdeci">pointer operator-&gt;() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00312">tset.hpp:312</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_ac495d4c396625faefe55de7ab1461c16"><div class="ttname"><a href="classtset_1_1const__iterator.html#ac495d4c396625faefe55de7ab1461c16">tset::const_iterator::difference_type</a></div><div class="ttdeci">ptrdiff_t difference_type</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00290">tset.hpp:290</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_ac861c7b75129ca476e267d7d0bebdfb8"><div class="ttname"><a href="classtset_1_1const__iterator.html#ac861c7b75129ca476e267d7d0bebdfb8">tset::const_iterator::operator*</a></div><div class="ttdeci">reference operator*() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00307">tset.hpp:307</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_ad40f45c3446cd57c39834505e8fc67ad"><div class="ttname"><a href="classtset_1_1const__iterator.html#ad40f45c3446cd57c39834505e8fc67ad">tset::const_iterator::operator++</a></div><div class="ttdeci">const_iterator operator++(int)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00317">tset.hpp:317</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_ae50724f5db59989e297b079cd5d777c2"><div class="ttname"><a href="classtset_1_1const__iterator.html#ae50724f5db59989e297b079cd5d777c2">tset::const_iterator::const_iterator</a></div><div class="ttdeci">const_iterator(const const_iterator &amp;other)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00297">tset.hpp:297</a></div></div>
+<div class="ttc" id="aclasstset_1_1const__iterator_html_aecae35f9a6ed8170625ff1d33b7b64f3"><div class="ttname"><a href="classtset_1_1const__iterator.html#aecae35f9a6ed8170625ff1d33b7b64f3">tset::const_iterator::pointer</a></div><div class="ttdeci">const T * pointer</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00291">tset.hpp:291</a></div></div>
 <div class="ttc" id="aclasstset_html"><div class="ttname"><a href="classtset.html">tset</a></div><div class="ttdoc">Classe Set templata.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00025">tset.hpp:25</a></div></div>
 <div class="ttc" id="aclasstset_html_a16e21d1e9bca14f6dcc7ddac4bb243f6"><div class="ttname"><a href="classtset.html#a16e21d1e9bca14f6dcc7ddac4bb243f6">tset::value_type</a></div><div class="ttdeci">T value_type</div><div class="ttdoc">Tipo di dato per il generico tipo T.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00029">tset.hpp:29</a></div></div>
-<div class="ttc" id="aclasstset_html_a176f4549b9490b9a49932b7db7330d8a"><div class="ttname"><a href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">tset::end</a></div><div class="ttdeci">const_iterator end() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00357">tset.hpp:357</a></div></div>
-<div class="ttc" id="aclasstset_html_a18a9fd786e00fdc8de9f7b1d3973b466"><div class="ttname"><a href="classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466">tset::remove</a></div><div class="ttdeci">bool remove(const value_type &amp;value)</div><div class="ttdoc">Metodo remove.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00208">tset.hpp:208</a></div></div>
-<div class="ttc" id="aclasstset_html_a1a7f94d9d9553cf731070a26cff3779e"><div class="ttname"><a href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">tset::swap</a></div><div class="ttdeci">void swap(tset &amp;other)</div><div class="ttdoc">Metodo swap.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00138">tset.hpp:138</a></div></div>
-<div class="ttc" id="aclasstset_html_a1dcc7b0e5254e700dca261a3bc90afdf"><div class="ttname"><a href="classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf">tset::tset</a></div><div class="ttdeci">tset(const tset &amp;other)</div><div class="ttdoc">Costruttore di copia (Copy constructor)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00084">tset.hpp:84</a></div></div>
-<div class="ttc" id="aclasstset_html_a4fb3056d3a4c1b156ba48198b9d666c2"><div class="ttname"><a href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">tset::contains</a></div><div class="ttdeci">bool contains(const value_type &amp;value) const</div><div class="ttdoc">Verifica se l'elemento è presente nel set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00247">tset.hpp:247</a></div></div>
-<div class="ttc" id="aclasstset_html_a5344a5a12d66dfb6853f7fdcebcd3515"><div class="ttname"><a href="classtset.html#a5344a5a12d66dfb6853f7fdcebcd3515">tset::operator=</a></div><div class="ttdeci">tset &amp; operator=(const tset &amp;other)</div><div class="ttdoc">Operatore di assegnamento.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00117">tset.hpp:117</a></div></div>
-<div class="ttc" id="aclasstset_html_a5924cad3d5fc5e68efbda045ef48e415"><div class="ttname"><a href="classtset.html#a5924cad3d5fc5e68efbda045ef48e415">tset::operator[]</a></div><div class="ttdeci">const value_type &amp; operator[](size_type index) const</div><div class="ttdoc">Operatore getter di una elemento del Set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00233">tset.hpp:233</a></div></div>
+<div class="ttc" id="aclasstset_html_a176f4549b9490b9a49932b7db7330d8a"><div class="ttname"><a href="classtset.html#a176f4549b9490b9a49932b7db7330d8a">tset::end</a></div><div class="ttdeci">const_iterator end() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00361">tset.hpp:361</a></div></div>
+<div class="ttc" id="aclasstset_html_a18a9fd786e00fdc8de9f7b1d3973b466"><div class="ttname"><a href="classtset.html#a18a9fd786e00fdc8de9f7b1d3973b466">tset::remove</a></div><div class="ttdeci">bool remove(const value_type &amp;value)</div><div class="ttdoc">Metodo remove.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00212">tset.hpp:212</a></div></div>
+<div class="ttc" id="aclasstset_html_a1a7f94d9d9553cf731070a26cff3779e"><div class="ttname"><a href="classtset.html#a1a7f94d9d9553cf731070a26cff3779e">tset::swap</a></div><div class="ttdeci">void swap(tset &amp;other)</div><div class="ttdoc">Metodo swap.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00142">tset.hpp:142</a></div></div>
+<div class="ttc" id="aclasstset_html_a1dcc7b0e5254e700dca261a3bc90afdf"><div class="ttname"><a href="classtset.html#a1dcc7b0e5254e700dca261a3bc90afdf">tset::tset</a></div><div class="ttdeci">tset(const tset &amp;other)</div><div class="ttdoc">Costruttore di copia (Copy constructor)</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00088">tset.hpp:88</a></div></div>
+<div class="ttc" id="aclasstset_html_a4fb3056d3a4c1b156ba48198b9d666c2"><div class="ttname"><a href="classtset.html#a4fb3056d3a4c1b156ba48198b9d666c2">tset::contains</a></div><div class="ttdeci">bool contains(const value_type &amp;value) const</div><div class="ttdoc">Verifica se l'elemento è presente nel set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00251">tset.hpp:251</a></div></div>
+<div class="ttc" id="aclasstset_html_a5344a5a12d66dfb6853f7fdcebcd3515"><div class="ttname"><a href="classtset.html#a5344a5a12d66dfb6853f7fdcebcd3515">tset::operator=</a></div><div class="ttdeci">tset &amp; operator=(const tset &amp;other)</div><div class="ttdoc">Operatore di assegnamento.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00121">tset.hpp:121</a></div></div>
+<div class="ttc" id="aclasstset_html_a5924cad3d5fc5e68efbda045ef48e415"><div class="ttname"><a href="classtset.html#a5924cad3d5fc5e68efbda045ef48e415">tset::operator[]</a></div><div class="ttdeci">const value_type &amp; operator[](size_type index) const</div><div class="ttdoc">Operatore getter di una elemento del Set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00237">tset.hpp:237</a></div></div>
 <div class="ttc" id="aclasstset_html_a69a7704d18e2d4d04e40b967cd3c23d3"><div class="ttname"><a href="classtset.html#a69a7704d18e2d4d04e40b967cd3c23d3">tset::~tset</a></div><div class="ttdeci">~tset()</div><div class="ttdoc">Distruttore.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00063">tset.hpp:63</a></div></div>
-<div class="ttc" id="aclasstset_html_a7027c53a855eced3134fb35f9e65c97a"><div class="ttname"><a href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">tset::add</a></div><div class="ttdeci">bool add(const value_type &amp;value)</div><div class="ttdoc">Metodo add.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00169">tset.hpp:169</a></div></div>
+<div class="ttc" id="aclasstset_html_a7027c53a855eced3134fb35f9e65c97a"><div class="ttname"><a href="classtset.html#a7027c53a855eced3134fb35f9e65c97a">tset::add</a></div><div class="ttdeci">bool add(const value_type &amp;value)</div><div class="ttdoc">Metodo add.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00173">tset.hpp:173</a></div></div>
 <div class="ttc" id="aclasstset_html_aa13f36cbe39d9295c4e04801dcf229b3"><div class="ttname"><a href="classtset.html#aa13f36cbe39d9295c4e04801dcf229b3">tset::size_type</a></div><div class="ttdeci">unsigned int size_type</div><div class="ttdoc">Tipo di dato per la dimensione dell'array.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00028">tset.hpp:28</a></div></div>
-<div class="ttc" id="aclasstset_html_aaa53c5feab0cfe2f0cc04c86ecd75e3e"><div class="ttname"><a href="classtset.html#aaa53c5feab0cfe2f0cc04c86ecd75e3e">tset::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const tset &amp;set)</div><div class="ttdoc">Operatore di stream.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00372">tset.hpp:372</a></div></div>
-<div class="ttc" id="aclasstset_html_ab9a504922c75cfa630ad13bc9aecdd9f"><div class="ttname"><a href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">tset::getSize</a></div><div class="ttdeci">size_type getSize() const</div><div class="ttdoc">Metodo per ottenere la dimensione corrente del Set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00153">tset.hpp:153</a></div></div>
-<div class="ttc" id="aclasstset_html_adf461a9bf91a9c5799d3797dad5a66a3"><div class="ttname"><a href="classtset.html#adf461a9bf91a9c5799d3797dad5a66a3">tset::tset</a></div><div class="ttdeci">tset(Q begin, Q end)</div><div class="ttdoc">Costruttore per creare un tset da una sequenza definita da una coppia di iteratori.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00395">tset.hpp:395</a></div></div>
-<div class="ttc" id="aclasstset_html_ae51aa5730fd8f3e39e33b109d4e58df0"><div class="ttname"><a href="classtset.html#ae51aa5730fd8f3e39e33b109d4e58df0">tset::operator==</a></div><div class="ttdeci">bool operator==(const tset &amp;set) const</div><div class="ttdoc">Operatore di uguaglianza ==.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00266">tset.hpp:266</a></div></div>
-<div class="ttc" id="aclasstset_html_af5df3f53549ca60c1972ac835361d1b0"><div class="ttname"><a href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">tset::begin</a></div><div class="ttdeci">const_iterator begin() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00352">tset.hpp:352</a></div></div>
+<div class="ttc" id="aclasstset_html_aaa53c5feab0cfe2f0cc04c86ecd75e3e"><div class="ttname"><a href="classtset.html#aaa53c5feab0cfe2f0cc04c86ecd75e3e">tset::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const tset &amp;set)</div><div class="ttdoc">Operatore di stream.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00376">tset.hpp:376</a></div></div>
+<div class="ttc" id="aclasstset_html_ab9a504922c75cfa630ad13bc9aecdd9f"><div class="ttname"><a href="classtset.html#ab9a504922c75cfa630ad13bc9aecdd9f">tset::getSize</a></div><div class="ttdeci">size_type getSize() const</div><div class="ttdoc">Metodo per ottenere la dimensione corrente del Set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00157">tset.hpp:157</a></div></div>
+<div class="ttc" id="aclasstset_html_adf461a9bf91a9c5799d3797dad5a66a3"><div class="ttname"><a href="classtset.html#adf461a9bf91a9c5799d3797dad5a66a3">tset::tset</a></div><div class="ttdeci">tset(Q begin, Q end)</div><div class="ttdoc">Costruttore per creare un tset da una sequenza definita da una coppia di iteratori.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00399">tset.hpp:399</a></div></div>
+<div class="ttc" id="aclasstset_html_ae51aa5730fd8f3e39e33b109d4e58df0"><div class="ttname"><a href="classtset.html#ae51aa5730fd8f3e39e33b109d4e58df0">tset::operator==</a></div><div class="ttdeci">bool operator==(const tset &amp;set) const</div><div class="ttdoc">Operatore di uguaglianza ==.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00270">tset.hpp:270</a></div></div>
+<div class="ttc" id="aclasstset_html_af5df3f53549ca60c1972ac835361d1b0"><div class="ttname"><a href="classtset.html#af5df3f53549ca60c1972ac835361d1b0">tset::begin</a></div><div class="ttdeci">const_iterator begin() const</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00356">tset.hpp:356</a></div></div>
 <div class="ttc" id="aclasstset_html_afedf95a6ac84bcce7957cef08f1b7311"><div class="ttname"><a href="classtset.html#afedf95a6ac84bcce7957cef08f1b7311">tset::tset</a></div><div class="ttdeci">tset()</div><div class="ttdoc">Costruttore di default.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00050">tset.hpp:50</a></div></div>
-<div class="ttc" id="atset_8hpp_html_a5e336c13341ed2686bc75d9d7538f4fd"><div class="ttname"><a href="tset_8hpp.html#a5e336c13341ed2686bc75d9d7538f4fd">operator-</a></div><div class="ttdeci">tset&lt; T, Equal &gt; operator-(tset&lt; T, Equal &gt; a, tset&lt; T, Equal &gt; b)</div><div class="ttdoc">Operatore di differenza tra set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00482">tset.hpp:482</a></div></div>
-<div class="ttc" id="atset_8hpp_html_a6b205646c3a964dcf325c4c9f0b4481a"><div class="ttname"><a href="tset_8hpp.html#a6b205646c3a964dcf325c4c9f0b4481a">filter_out</a></div><div class="ttdeci">tset&lt; T, Equal &gt; filter_out(const tset&lt; T, Equal &gt; &amp;s, Pred p)</div><div class="ttdoc">Filtra gli elementi di un set basandosi su un predicato fornito.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00427">tset.hpp:427</a></div></div>
-<div class="ttc" id="atset_8hpp_html_a6fdee6b80e43e9aac06e00bb94b08387"><div class="ttname"><a href="tset_8hpp.html#a6fdee6b80e43e9aac06e00bb94b08387">save</a></div><div class="ttdeci">void save(const tset&lt; std::string, Equal &gt; &amp;s, const std::string &amp;file)</div><div class="ttdoc">Salva il contenuto di un set di stringhe in un file.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00508">tset.hpp:508</a></div></div>
-<div class="ttc" id="atset_8hpp_html_a8a7c27d3d63a7fecaadb7a3f8206c1c4"><div class="ttname"><a href="tset_8hpp.html#a8a7c27d3d63a7fecaadb7a3f8206c1c4">operator+</a></div><div class="ttdeci">tset&lt; T, Equal &gt; operator+(tset&lt; T, Equal &gt; a, tset&lt; T, Equal &gt; b)</div><div class="ttdoc">Concatena due set senza duplicati.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00454">tset.hpp:454</a></div></div>
+<div class="ttc" id="atset_8hpp_html_a5e336c13341ed2686bc75d9d7538f4fd"><div class="ttname"><a href="tset_8hpp.html#a5e336c13341ed2686bc75d9d7538f4fd">operator-</a></div><div class="ttdeci">tset&lt; T, Equal &gt; operator-(tset&lt; T, Equal &gt; a, tset&lt; T, Equal &gt; b)</div><div class="ttdoc">Operatore di differenza tra set.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00486">tset.hpp:486</a></div></div>
+<div class="ttc" id="atset_8hpp_html_a6b205646c3a964dcf325c4c9f0b4481a"><div class="ttname"><a href="tset_8hpp.html#a6b205646c3a964dcf325c4c9f0b4481a">filter_out</a></div><div class="ttdeci">tset&lt; T, Equal &gt; filter_out(const tset&lt; T, Equal &gt; &amp;s, Pred p)</div><div class="ttdoc">Filtra gli elementi di un set basandosi su un predicato fornito.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00431">tset.hpp:431</a></div></div>
+<div class="ttc" id="atset_8hpp_html_a6fdee6b80e43e9aac06e00bb94b08387"><div class="ttname"><a href="tset_8hpp.html#a6fdee6b80e43e9aac06e00bb94b08387">save</a></div><div class="ttdeci">void save(const tset&lt; std::string, Equal &gt; &amp;s, const std::string &amp;file)</div><div class="ttdoc">Salva il contenuto di un set di stringhe in un file.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00512">tset.hpp:512</a></div></div>
+<div class="ttc" id="atset_8hpp_html_a8a7c27d3d63a7fecaadb7a3f8206c1c4"><div class="ttname"><a href="tset_8hpp.html#a8a7c27d3d63a7fecaadb7a3f8206c1c4">operator+</a></div><div class="ttdeci">tset&lt; T, Equal &gt; operator+(tset&lt; T, Equal &gt; a, tset&lt; T, Equal &gt; b)</div><div class="ttdoc">Concatena due set senza duplicati.</div><div class="ttdef"><b>Definition:</b> <a href="tset_8hpp_source.html#l00458">tset.hpp:458</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x_83',['x',['../structpoint.html#ad679b07fb69d55f5ad454d0f1f2891d5',1,'point']]]
+  ['buongiorno_90',['Buongiorno',['../output_8txt.html#a25bc99d75fed287b4c32b17905955795',1,'output.txt']]]
 ];
